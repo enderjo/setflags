@@ -1,0 +1,11 @@
+port: :8080
+app:
+    keystore: conf/keystore.json
+db:
+    # dbType: postgres
+    dbType: mysql
+    host: 127.0.0.1
+    port: 3306
+    dbName: set-flags
+    username: root
+    password: zero2one
