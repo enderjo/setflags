@@ -1,11 +1,19 @@
 package router
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/PioneerDev/setflags/config"
+	"github.com/gin-gonic/gin"
+)
 
 // InitRouter init router
 func InitRouter() *gin.Engine {
-	r := gin.New()
-	initSwagger(r)
+	gin.SetMode(config.ServerConfig.Mode)
 
-	return r
+	router := gin.Default()
+	initSwagger(router)
+
+	apiGroup := router.Group("api")
+	initEndpoint(apiGroup)
+
+	return router
 }

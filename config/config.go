@@ -9,6 +9,7 @@ import (
 
 //Server 服务器配置
 type Server struct {
+	Mode string `mapstructure:"mode" json:"mode" yaml:"mode"`
 	Port string `mapstructure:"port" json:"port" yaml:"port"`
 	Db   DB     `mapstructure:"db" json:"db" yaml:"db"`
 	App  App    `mapstructure:"app" json:"app" yaml:"app"`

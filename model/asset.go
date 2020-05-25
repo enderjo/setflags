@@ -8,9 +8,9 @@ import (
 
 //Asset asset
 type Asset struct {
-	ID       uuid.UUID `json:"id"`
-	Symbol   string
-	PriceUsd string
-	Balance  int
-	PaidAt   *time.Time
+	ID       uuid.UUID  `json:"id" gorm:"column:id;type:varchar(64);primary_key"`
+	Symbol   string     `json:"symbol" gorm:"column:symbol;type:varchar(64)"`
+	PriceUsd int        `json:"priceUsd" gorm:"column:priceUsd;type:int(10)"`
+	Balance  int        `json:"balance" gorm:"column:balance;type:int(10)"`
+	PaidAt   *time.Time `json:"paidAt" gorm:"column:paidAt;type:datetime"`
 }
