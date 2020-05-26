@@ -8,6 +8,13 @@ import (
 	"github.com/PioneerDev/setflags/router"
 )
 
+// @title SetFlags API
+// @version 0.0.1
+// @description SetFlags API
+// @securityDefinitions.apikey ApiKeyAuth
+// @in header
+// @name x-token
+// @BasePath /
 func main() {
 	db, err := database.Init()
 	if err != nil {

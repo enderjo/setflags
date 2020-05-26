@@ -12,8 +12,8 @@ import (
 type UserEndpoint struct {
 }
 
-//FindAll findAll
-func (userEndpoint UserEndpoint) FindAll(c *gin.Context) {
+//List list all user
+func (userEndpoint UserEndpoint) List(c *gin.Context) {
 	var flag model.Flag
 	database.ServerDb.First(&flag, "21")
 	c.JSON(http.StatusOK, flag)

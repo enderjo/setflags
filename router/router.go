@@ -2,6 +2,7 @@ package router
 
 import (
 	"github.com/PioneerDev/setflags/config"
+	"github.com/PioneerDev/setflags/middleware"
 	"github.com/gin-gonic/gin"
 )
 
@@ -10,6 +11,9 @@ func InitRouter() *gin.Engine {
 	gin.SetMode(config.ServerConfig.Mode)
 
 	router := gin.Default()
+
+	router.Use(middleware.Cors())
+
 	initSwagger(router)
 
 	apiGroup := router.Group("api")

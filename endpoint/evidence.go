@@ -12,9 +12,14 @@ import (
 type EvidenceEndpoint struct {
 }
 
-//FindAll findAll
-func (evidenceEndpoint EvidenceEndpoint) FindAll(c *gin.Context) {
+//List List
+func (evidenceEndpoint EvidenceEndpoint) List(c *gin.Context) {
 	var flag model.Flag
 	database.ServerDb.First(&flag, "21")
 	c.JSON(http.StatusOK, flag)
+}
+
+//Save save evidence
+func (evidenceEndpoint EvidenceEndpoint) Save(c *gin.Context) {
+
 }

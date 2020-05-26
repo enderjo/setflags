@@ -1,8 +1,84 @@
 {
     "swagger": "2.0",
     "info": {
+        "description": "SetFlags API",
+        "title": "SetFlags API",
         "contact": {},
-        "license": {}
+        "license": {},
+        "version": "0.0.1"
     },
-    "paths": {}
+    "basePath": "/",
+    "paths": {
+        "/flags": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Base"
+                ],
+                "summary": "用户注册账号",
+                "parameters": [
+                    {
+                        "description": "用户注册接口",
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.Flag"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{\"data\":{}}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.Flag": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "integer"
+                },
+                "assetId": {
+                    "type": "string"
+                },
+                "createAt": {
+                    "type": "string"
+                },
+                "days": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "payerId": {
+                    "type": "string"
+                },
+                "task": {
+                    "type": "string"
+                },
+                "timesAchived": {
+                    "type": "integer"
+                },
+                "updateAt": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "name": "x-token",
+            "in": "header"
+        }
+    }
 }

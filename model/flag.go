@@ -8,7 +8,7 @@ import (
 
 //Flag flag
 type Flag struct {
-	ID            uuid.UUID  `json:"id" gorm:"column:id;type:varchar(64);not_null;primary_key"`
+	ID            uuid.UUID  `json:"id" gorm:"column:id;type:varchar(64);not null;primary_key"`
 	PayerID       uuid.UUID  `json:"payerId" gorm:"column:payerId;type:varchar(64);not null"`
 	Task          string     `json:"task" gorm:"column:task;type:varchar(512);not null"`
 	Days          int        `json:"days" gorm:"column:days;type:int(10)"`
