@@ -20,5 +20,5 @@ func initEndpoint(router *gin.RouterGroup) {
 	router.GET("/users/:user_id/rewards/:flag_id", endpoint.UserEndpoint{}.List)
 
 	//assets
-	router.GET("/assets/:id", endpoint.AssetEndpoint{}.List)
+	router.GET("/assets/:id", endpoint.AssetEndpoint{}.Get)
 }

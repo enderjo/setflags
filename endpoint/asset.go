@@ -1,10 +1,8 @@
 package endpoint
 
 import (
-	"net/http"
-
-	"github.com/PioneerDev/setflags/model"
-	"github.com/PioneerDev/setflags/model/database"
+	"github.com/PioneerDev/setflags/endpoint/response"
+	"github.com/PioneerDev/setflags/service"
 	"github.com/gin-gonic/gin"
 )
 
@@ -12,9 +10,10 @@ import (
 type AssetEndpoint struct {
 }
 
-//List List
-func (assetEndpoint AssetEndpoint) List(c *gin.Context) {
-	var flag model.Flag
-	database.ServerDb.First(&flag, "21")
-	c.JSON(http.StatusOK, flag)
+//Get get the asset
+func (assetEndpoint AssetEndpoint) Get(c *gin.Context) {
+	id := c.Param("id")
+	asset := service.NewAssetService().Get(id)
+
+	response.Success(c, asset)
 }

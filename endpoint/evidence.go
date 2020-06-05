@@ -1,10 +1,9 @@
 package endpoint
 
 import (
-	"net/http"
-
+	"github.com/PioneerDev/setflags/endpoint/response"
 	"github.com/PioneerDev/setflags/model"
-	"github.com/PioneerDev/setflags/model/database"
+	"github.com/PioneerDev/setflags/service"
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,12 +13,25 @@ type EvidenceEndpoint struct {
 
 //List List
 func (evidenceEndpoint EvidenceEndpoint) List(c *gin.Context) {
-	var flag model.Flag
-	database.ServerDb.First(&flag, "21")
-	c.JSON(http.StatusOK, flag)
+	id := c.Param("id")
+	flags := service.NewEvidenceService().List(id)
+	response.Success(c, flags)
 }
 
 //Save save evidence
 func (evidenceEndpoint EvidenceEndpoint) Save(c *gin.Context) {
+	var evidence model.Evidence
+	err := c.ShouldBindJSON(&evidence)
+	if err != nil {
+		response.Fail(c, 1, "param error")
+		return
+	}
 
+	save := service.NewEvidenceService().Save(&evidence)
+	if !save {
+		response.Fail(c, 1, "save error")
+		return
+	}
+
+	response.Success(c, evidence)
 }
